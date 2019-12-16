@@ -11,6 +11,7 @@ function price(num) {
 var num = 1231231231231.111;
 var p1 = price(num);
 console.log(p1);
-console.log(num.toLocaleString());
 
-// price('2342423')
+var n1 = num.toLocaleString();
+console.log(n1.slice(0, n1.length - 1));
+
