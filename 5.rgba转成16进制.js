@@ -24,14 +24,24 @@ console.log(hex2);
 function hexToRgba(hex, opacity = 1) {
   if (!hex) throw new Error("缺少参数");
 
-  var reg = /^#[0-9a-z]{6}$/;
+  var reg = /^#[0-9a-fA-F]{6}$/;
+  var reg2 = /^#[0-9a-fA-F]{3}$/;
   if (reg.test(hex)) {
     return `rgba(${parseInt(`0x${hex.slice(1, 3)}`)}, ${parseInt(
       `0x${hex.slice(3, 5)}`
     )}, ${parseInt(`0x${hex.slice(5, 7)}`)}, ${opacity})`;
   }
+  if (reg2.test(hex)) {
+    return `rgba(${parseInt(
+      `0x${hex.slice(1, 2)}${hex.slice(1, 2)}`
+    )}, ${parseInt(`0x${hex.slice(2, 3)}${hex.slice(2, 3)}`)}, ${parseInt(
+      `0x${hex.slice(3, 4)}${hex.slice(3, 4)}`
+    )}, ${opacity})`;
+  }
   throw new Error("输入参数格式错误");
 }
 
 var rgb = hexToRgba("#ffe8ba");
+var rgb2 = hexToRgba("#000");
 console.log(rgb);
+console.log(rgb2);
