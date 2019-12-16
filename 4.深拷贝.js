@@ -1,9 +1,6 @@
 function getType(data) {
-  return Object.prototype.toString
-    .call(data)
-    .split(" ")[1]
-    .split("]")[0]
-    .toLowerCase();
+  var reg = /(?<=\[object\s)[a-z]+(?=\])/g
+  return Object.prototype.toString.call(data).toLowerCase().match(reg)[0];
 }
 
 function clone(target, map = new WeakMap()) {
