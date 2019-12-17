@@ -1,7 +1,9 @@
 function toChineseNum(num) {
   if (typeof num !== "number") throw new Error(`${num} is not a number`);
+  if (num === 0) return "零";
   // 不处理小数
   num = parseInt(num);
+
   num += "";
 
   const numLength = num.length;
@@ -20,7 +22,7 @@ function getResult(str) {
   const unitArr = ["", "十", "百", "千", "万"];
   let res = "";
   let strLength = str.length;
-  if (strLength < 5) {
+  if (strLength <= 5) {
     for (let i in str) {
       res += numStr[str[i]] + unitArr[strLength - i - 1];
     }
@@ -40,8 +42,9 @@ function getResult(str) {
   }
   return res
     .replace(/零[零十百千]/g, "")
-    .replace(/零+$/, "")
+    .replace(/零+$/g, "")
     .replace(/零万/g, "万");
 }
 
-console.log(toChineseNum(11122223333));
+console.log(toChineseNum(1234567890));
+// console.log(toChineseNum(10));
