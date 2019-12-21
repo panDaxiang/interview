@@ -2,12 +2,12 @@ function bigNumberAdd(str1, str2) {
   if (typeof str1 !== "string" || typeof str2 !== "string")
     throw new Error(`${str1} or ${str2} are not Strings`);
 
-  const len1 = str1.length;
-  const len2 = str2.length;
-  const lengthDiff = Math.abs(len1 - len2);
-  const diff = Array(lengthDiff)
-    .fill(0)
-    .join("");
+  const len1 = str1.length,
+    len2 = str2.length,
+    lengthDiff = Math.abs(len1 - len2),
+    diff = Array(lengthDiff)
+      .fill(0)
+      .join("");
 
   if (len1 > len2) {
     str2 = diff + str2;
@@ -15,9 +15,9 @@ function bigNumberAdd(str1, str2) {
     str1 = diff + str1;
   }
 
-  const arr1 = str1.split("").reverse();
-  const arr2 = str2.split("").reverse();
-  const resultArr = [];
+  const arr1 = str1.split("").reverse(),
+    arr2 = str2.split("").reverse(),
+    resultArr = [];
 
   for (let i = 0; i < arr1.length; i++) {
     const result = parseInt(arr1[i]) + parseInt(arr2[i]);
