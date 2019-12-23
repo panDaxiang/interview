@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        background-color: #ccc;
+        /* overflow: hidden; */
+      }
+      .box2 {
+        border: 1px solid #000;
+        width: 100px;
+        height: 100px;
+        float: left;
+      }
+      .box4 {
+        border: 1px solid #000;
+        width: 100px;
+        height: 100px;
+      }
+      .box5 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /* border: 1px solid #000; */
+      }
+      .box6 {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">
+      <!-- <div class="box2">
+        1111
+      </div> -->
+    </div>
+    <!-- <div class='box3'>
+      <div class='box4'>4444</div>
+      <div class="box2"></div>
+    </div> -->
+
+    <div class="box5">
+      <div class="box6">1111111</div>
+    </div>
+    <script>
+      var oBox1 = document.getElementsByClassName("box1")[0];
+      console.log(oBox1.clientHeight); // 0 浮动元素不会被父级计算高度
+    </script>
+  </body>
+</html>
