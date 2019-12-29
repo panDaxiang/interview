@@ -66,21 +66,21 @@ ETag 会根据文件内容是否改变修改标识,而 Last-Modified 记录的�
 - 请求成功
   请求成功,TCP 四次握手,结束请求
 
-  ## 5.new 操作符执行过程
+## 5.new 操作符执行过程
 
-  - 新建一个空对象
-    let obj = new Fn()
+- 新建一个空对象
+  let obj = new Fn()
 
-  - 将新对象的内部原型指向构造函数的原型
-    obj.**ptoto** = Fn.prototype
+- 将新对象的内部原型指向构造函数的原型
+  obj.__ptoto__ = Fn.prototype
 
-  - 将 this 指向新对象
-    Fn.call(obj)
+- 将 this 指向新对象
+  Fn.call(obj)
 
-  - 返回对象
-    let result = Fn()
-    if(result instanceof Object){
-    fn = result
-    }else{
-    fn = obj
-    }
+- 返回对象
+  let result = Fn()
+  if(result instanceof Object){
+  fn = result
+  }else{
+  fn = obj
+  }
