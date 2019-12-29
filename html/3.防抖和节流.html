@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>防抖和节流</title>
+  <style>
+    body{
+      height: 2000px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script src='../js/15.防抖和节流.js'></script>
+  <script>
+    window.addEventListener('scroll', throttle(function(){
+      let top = document.documentElement.scrollTop || document.body.scrollTop
+      console.log(top)
+    }, 1000))
+
+    window.addEventListener('mousemove', debounce(function(e){
+      console.log(e.pageX)
+    }, 1000))
+  </script>
+</body>
+</html>
