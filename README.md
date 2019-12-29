@@ -69,18 +69,29 @@ ETag 会根据文件内容是否改变修改标识,而 Last-Modified 记录的�
 ## 5.new 操作符执行过程
 
 - 新建一个空对象
+
+  ```
   let obj = new Fn()
+  ```
 
 - 将新对象的内部原型指向构造函数的原型
+
+  ```
   obj.__ptoto__ = Fn.prototype
+  ```
 
 - 将 this 指向新对象
+
+  ```
   Fn.call(obj)
+  ```
 
 - 返回对象
+  ```
   let result = Fn()
   if(result instanceof Object){
-  fn = result
+   fn = result
   }else{
-  fn = obj
+   fn = obj
   }
+  ```
