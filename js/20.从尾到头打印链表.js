@@ -19,7 +19,7 @@ class LList{
     const arr = [];
     let currentNode = this.head
     while(currentNode.next !== null){
-      arr.push(currentNode.element)
+      arr.unshift(currentNode.element)
       currentNode = currentNode.next
     }
     console.log(arr);
