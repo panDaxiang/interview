@@ -15,6 +15,18 @@ class LList {
     }
     return currentNode;
   }
+  findPrev(item){
+    let currentNode = this.head
+    while(currentNode.next !== null && currentNode.next.element !== item){
+      currentNode = currentNode.next
+    }
+    console.log(currentNode.element);
+  }
+  insertHead(item){
+    let newElement = new Node(item)
+    newElement.next = this.head 
+    this.head = newElement
+  }
   insert(newElement, item) {
     let currentNode = this.find(item);
     let newNode = new Node(newElement);
@@ -22,11 +34,14 @@ class LList {
     currentNode.next = newNode;
   }
   display() {
+    let list = []
     let current = this.head;
+    list.push(current.element)
     while (current.next !== null) {
-      console.log(current.next.element);
+      list.push(current.next.element);
       current = current.next;
     }
+    console.log(list);
   }
   remove(item) {
     let removeNode = this.find(item);
@@ -40,5 +55,8 @@ const list = new LList();
 list.insert("apple", "head");
 list.insert("banana", "apple");
 list.insert("pear", "banana");
-list.remove("apple");
+list.insertHead('one')
+// list.remove("apple");
 list.display();
+
+list.findPrev('head')
