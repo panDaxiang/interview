@@ -5,13 +5,27 @@
   }
 */
 
-function printListFromTailToHead(head) {
-  var res = [],
-    p = head;
-  while (p) {
-    res.unshift(p.val);
-    p = p.next;
+function Node(element){
+  this.element = element
+  this.next = null
+}
+
+class LList{
+  constructor(){
+    this.head = new Node('head')
   }
 
-  return res;
+  printListFromTailToHead(){
+    const arr = [];
+    let currentNode = this.head
+    while(currentNode.next !== null){
+      arr.push(currentNode.element)
+      currentNode = currentNode.next
+    }
+    console.log(arr);
+    return arr
+  }
 }
+
+const list = new LList()
+list.printListFromTailToHead()
