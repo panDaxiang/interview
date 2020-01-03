@@ -1,15 +1,9 @@
-Function.prototype.bind2 = function(fn) {
-  let context = this;
-  let args = [].slice.call(arguments, 1);
-  let fNOP = function() {};
+function toCamelCaseVar(str){
+  let reg = /[-|_][a-zA-Z]{1}/g
+  return str.replace(reg, function(ele){
+    return ele.slice(1).toUpperCase()
+  })
+}
 
-  fNOP.prototype = this.prototype;
-  let fBound = function() {
-    return context.apply(
-      this instanceof fNOP ? this : fn,
-      args.concat([].slice.call(arguments))
-    );
-  };
-  fBound.prototype = new fNOP();
-  return fBound;
-};
+let result = toCamelCaseVar('ad-dsd_ddd')
+console.log(result);
