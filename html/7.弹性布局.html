@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .wrap > div {
+        width: 200px;
+        height: 100px;
+      }
+      .child1 {
+        background-color: red;
+        flex-grow: 1;
+      }
+      .wrap .child2 {
+        background-color: blue;
+        /* width: 800px; */
+        /* flex-grow: 1; */
+        flex-shrink: 0;
+        flex-basis: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="child1"></div>
+      <div class="child2"></div>
+    </div>
+  </body>
+</html>
