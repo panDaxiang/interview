@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .box1{
+        background-color: red;
+        width: 200px;
+        height: 200px;
+        border:5px dotted blue;
+        padding: 3px;
+        box-sizing: border-box;
+        /* background-clip: content-box; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class='box1'></div>
+    <script>
+      var oBox1 = document.getElementsByClassName('box1')[0]
+      console.log(oBox1.offsetWidth)
+    </script>
+  </body>
+</html>
