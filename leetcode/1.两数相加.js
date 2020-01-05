@@ -3,25 +3,14 @@
   你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 
 */
 
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
 var twoSum = function(nums, target) {
-  nums.sort((a, b) => a - b);
-  let i = 0,
-    j = nums.length - 1,
-    result = [];
-  while (nums[i] + nums[j] !== target) {
-    if (nums[i] + nums[j] > target) {
-      j--;
-    }
-    if (nums[i] + nums[j] < target) {
-      i++;
-    }
+  let len = nums.length;
+  let map = {};
+  for (let i = 0; i < len; i++) {
+    let num = target - nums[i];
+    if (num in map) return [map[num], i];
+    map[nums[i]] = i;
   }
-  return result.concat(i, j);
 };
 
 let result = twoSum([2, 7, 11, 15], 9);
