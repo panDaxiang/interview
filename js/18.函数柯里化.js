@@ -1,32 +1,37 @@
-function add() {
-  let args = [].slice.call(arguments);
-  let curring = function() {
-    if (arguments.length === 0) {
-      return args.reduce((a, b) => a + b);
+let add = (...rest) => {
+  let result = [];
+  result.push(...rest);
+  let curry = (...rest) => {
+    if (rest.length === 0) {
+      return result.reduce((a, b) => a + b);
     } else {
-      args.push(...arguments);
-      return curring;
+      result.push(...rest);
+      return curry;
+    }
+  };
+  return curry;
+};
+
+let res1 = add(1, 2)();
+let res2 = add(1)(2)();
+
+let curry = (fn, ...args) => {
+  let result = [...args];
+  let _fn = (...args) => {
+    if (args.length === 0) {
+      return fn.apply(this, result);
+    } else {
+      result.push(...args);
+      return _fn;
     }
   };
 
-  return curring;
+  return _fn;
+};
+
+function plus() {
+  return [...arguments].reduce((a, b) => a + b);
 }
 
-let result = add(1, 2, 3)();
-let result2 = add(1)(2)(3)();
-console.log(result, result2);
-
-// 写一个加法函数(sum)，使他可以同时支持sum(x,y)和sum(x)(y)两种调用方式 
-function sum(){
-  let args = [...arguments]
-  if(args.length == 2){
-    return args.reduce((a, b) => a + b)
-  }
-
-  return function(){
-    args = args.concat([...arguments])
-    return sum(...args)
-  }
-}
-
-console.log(sum(1)(2))
+let res3 = curry(plus, 1)(2, 3)();
+console.log(res3);
