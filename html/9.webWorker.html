@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script id="worker" type="app/worker">
+    this.addEventListener('message', e => {
+      this.postMessage('hello, I am a worker')
+    })
+  </script>
+  <script>
+    var blob = new Blob([document.querySelector('#worker').textContent])
+    var url = URL.createObjectURL(blob)
+    var worker = new Worker(url)
+    worker.postMessage('hello worker')
+    worker.addEventListener('message', e => {
+      console.log(e.data)
+    })
+  </script>
+</body>
+</html>
